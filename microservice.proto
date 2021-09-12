@@ -1,0 +1,46 @@
+// Protocol version: v.1
+
+syntax = "proto3";
+
+package micro_service.pb;
+
+service MicroService {
+    rpc Ping(EchoRequest) returns (EchoResponse) {}
+    rpc PutFile(PutFileRequest) returns (PutFileResponse) {}
+    rpc GetFile(GetFileRequest) returns (GetFileResponse) {}
+    rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse) {}
+}
+
+message EchoRequest {
+    string echo_text = 1;
+}
+
+message EchoResponse {
+    string echo_text = 1;
+}
+
+message PutFileRequest {
+    string file_key = 1;
+    bytes file = 2;
+}
+
+message PutFileResponse {
+    string result = 1;
+}
+
+message GetFileRequest {
+    string file_key = 1;
+}
+
+message GetFileResponse {
+    string result = 1;
+    bytes file = 2;
+}
+
+message DeleteFileRequest {
+    string file_key = 1;
+}
+
+message DeleteFileResponse {
+    string result = 1;
+}
